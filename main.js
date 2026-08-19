@@ -18,6 +18,9 @@ function moveCourtney(){
         let moveLeftReverse = false;
 
 
+        container.style.background = randomColor();
+
+
         setInterval(() => {
 
             // hight = 50 and width = 50;
@@ -28,21 +31,21 @@ function moveCourtney(){
             const newTop = fixComputedStringStyle(courtneyComputed.top , true , moveTopReverse);
 
 
-            if(newTop >= containerHeight - 100){
+            if(newTop >= containerHeight - 150){
                 moveTopReverse = true;
-                courtney.style.backgroundColor = randomColor();
+                container.style.background = randomColor();
             } else if (newTop <= 5) {
                 moveTopReverse = false;
-                courtney.style.backgroundColor = randomColor();
+                container.style.background = randomColor();
             }
 
 
-            if(newLeft >= containerWidth - 100){
+            if(newLeft >= containerWidth - 200){
                 moveLeftReverse = true;
-                courtney.style.backgroundColor = randomColor();
+                container.style.background = randomColor();
             } else if (newLeft <= 5) {
                 moveLeftReverse = false;
-                courtney.style.backgroundColor = randomColor();
+                container.style.background = randomColor();
             }
 
 
@@ -61,11 +64,19 @@ function moveCourtney(){
 
 
 function randomColor(){
-    const colors = ["darkgreen" , "navy" , "red" , "black" , "purple" , "brown" , "pink"];
+    const colors = [
 
-    const color = colors[Math.floor(Math.random() * 4)]
+        "linear-gradient(to right, darkgreen, lightgreen)",
+        "linear-gradient(to right, navy, lightblue)",
+        "linear-gradient(to right, purple, pink)",
+        "linear-gradient(to right, brown, tan)",
+        "linear-gradient(to right, pink, hotpink)"
 
-    return "beige";
+    ];
+
+    const color = colors[Math.floor(Math.random() * colors.length)]
+
+    return color;
 }
 
 function fixComputedStringStyle(string , addNum = true , subtraction){
