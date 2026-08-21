@@ -1,5 +1,5 @@
 
-function moveCourtney(){
+function moveHeart(){
 
 
     const container = document.getElementById("container");
@@ -9,7 +9,7 @@ function moveCourtney(){
     const containerHeight = fixComputedStringStyle(containerStyle.height , false , false);
     const containerWidth = fixComputedStringStyle(containerStyle.width , false , false);
 
-    const courtney = document.getElementById("courtney");
+    const Heart = document.getElementById("heart");
 
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -20,15 +20,26 @@ function moveCourtney(){
 
         container.style.background = randomColor();
 
+        document.addEventListener("click" , () => {
+            moveTopReverse = !moveTopReverse;
+            moveLeftReverse = !moveLeftReverse;
+
+            Heart.classList.remove("spin");
+
+            // Force the animation to restart
+            void Heart.offsetWidth;
+
+            Heart.classList.add("spin");
+        })
 
         setInterval(() => {
 
             // hight = 50 and width = 50;
 
-            const courtneyComputed = getComputedStyle(courtney); // the returned value is a string;
+            const HeartComputed = getComputedStyle(Heart); // the returned value is a string;
 
-            const newLeft = fixComputedStringStyle(courtneyComputed.left , true , moveLeftReverse);
-            const newTop = fixComputedStringStyle(courtneyComputed.top , true , moveTopReverse);
+            const newLeft = fixComputedStringStyle(HeartComputed.left , true , moveLeftReverse);
+            const newTop = fixComputedStringStyle(HeartComputed.top , true , moveTopReverse);
 
 
             if(newTop >= containerHeight - 150){
@@ -50,8 +61,8 @@ function moveCourtney(){
 
 
 
-            courtney.style.top = `${newTop}px`;
-            courtney.style.left = `${newLeft}px`;
+            Heart.style.top = `${newTop}px`;
+            Heart.style.left = `${newLeft}px`;
 
 
         }, 10);
@@ -90,4 +101,4 @@ function fixComputedStringStyle(string , addNum = true , subtraction){
     return newVal;
 }
 
-moveCourtney();
+moveHeart();

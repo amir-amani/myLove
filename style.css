@@ -30,7 +30,7 @@ body{
     color: lightgoldenrodyellow;
  }
  
- #courtney {
+ #heart {
     position: absolute;
     top: 5px;
     left: 5px;
@@ -45,3 +45,18 @@ body{
     align-items: center;
 
  }
+
+
+ @keyframes spinHeart {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#heart.spin {
+    animation: spinHeart 0.5s ease;
+}
